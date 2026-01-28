@@ -3,8 +3,8 @@ import { DevtoolsPanel, DevtoolsProvider } from "@refinedev/devtools";
 import { RefineKbar, RefineKbarProvider } from "@refinedev/kbar";
 
 import routerProvider, {
-  DocumentTitleHandler,
-  UnsavedChangesNotifier,
+    DocumentTitleHandler,
+    UnsavedChangesNotifier,
 } from "@refinedev/react-router";
 import { BrowserRouter, Route, Routes } from "react-router";
 import "./App.css";
@@ -14,36 +14,36 @@ import { ThemeProvider } from "./components/refine-ui/theme/theme-provider";
 import { dataProvider } from "./providers/data";
 
 function App() {
-  return (
-    <BrowserRouter>
-      <GitHubBanner />
-      <RefineKbarProvider>
-        <ThemeProvider>
-          <DevtoolsProvider>
-            <Refine
-              dataProvider={dataProvider}
-              notificationProvider={useNotificationProvider()}
-              routerProvider={routerProvider}
-              options={{
-                syncWithLocation: true,
-                warnWhenUnsavedChanges: true,
-                projectId: "njBDXG-eVB4ZN-PiOXRB",
-              }}
-            >
-              <Routes>
-                <Route index element={<WelcomePage />} />
-              </Routes>
-              <Toaster />
-              <RefineKbar />
-              <UnsavedChangesNotifier />
-              <DocumentTitleHandler />
-            </Refine>
-            <DevtoolsPanel />
-          </DevtoolsProvider>
-        </ThemeProvider>
-      </RefineKbarProvider>
-    </BrowserRouter>
-  );
+    return (
+        <BrowserRouter>
+            <GitHubBanner />
+            <RefineKbarProvider>
+                <ThemeProvider>
+                    <DevtoolsProvider>
+                        <Refine
+                            dataProvider={dataProvider}
+                            notificationProvider={useNotificationProvider()}
+                            routerProvider={routerProvider}
+                            options={{
+                                syncWithLocation: true,
+                                warnWhenUnsavedChanges: true,
+                                projectId: "njBDXG-eVB4ZN-PiOXRB",
+                            }}
+                        >
+                            <Routes>
+                                <Route index element={<WelcomePage />} />
+                            </Routes>
+                            <Toaster />
+                            <RefineKbar />
+                            <UnsavedChangesNotifier />
+                            <DocumentTitleHandler />
+                        </Refine>
+                        <DevtoolsPanel />
+                    </DevtoolsProvider>
+                </ThemeProvider>
+            </RefineKbarProvider>
+        </BrowserRouter>
+    );
 }
 
 export default App;
