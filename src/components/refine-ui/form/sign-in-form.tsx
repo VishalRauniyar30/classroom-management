@@ -1,11 +1,11 @@
-"use client";
+"use client"
 
-import { useState } from "react";
+import { useState } from "react"
 
-import { CircleHelp } from "lucide-react";
+import { CircleHelp } from "lucide-react"
 
-import { InputPassword } from "@/components/refine-ui/form/input-password";
-import { Button } from "@/components/ui/button";
+import { InputPassword } from "@/components/refine-ui/form/input-password"
+import { Button } from "@/components/ui/button"
 import {
     Card,
     CardContent,
@@ -13,45 +13,45 @@ import {
     CardFooter,
     CardHeader,
     CardTitle,
-} from "@/components/ui/card";
-import { Checkbox } from "@/components/ui/checkbox";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Separator } from "@/components/ui/separator";
-import { cn } from "@/lib/utils";
-import { useLink, useLogin, useRefineOptions } from "@refinedev/core";
+} from "@/components/ui/card"
+import { Checkbox } from "@/components/ui/checkbox"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import { Separator } from "@/components/ui/separator"
+import { cn } from "@/lib/utils"
+import { useLink, useLogin, useRefineOptions } from "@refinedev/core"
 
 export const SignInForm = () => {
-    const [rememberMe, setRememberMe] = useState(false);
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
+    const [rememberMe, setRememberMe] = useState(false)
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
 
-    const Link = useLink();
+    const Link = useLink()
 
-    const { title } = useRefineOptions();
+    const { title } = useRefineOptions()
 
-    const { mutate: login } = useLogin();
+    const { mutate: login } = useLogin()
 
     const handleSignIn = async (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
+        e.preventDefault()
 
         login({
             email,
             password,
-        });
-    };
+        })
+    }
 
     const handleSignInWithGoogle = () => {
         login({
             providerName: "google",
-        });
-    };
+        })
+    }
 
     const handleSignInWithGitHub = () => {
         login({
             providerName: "github",
-        });
-    };
+        })
+    }
 
     return (
         <div
@@ -75,7 +75,7 @@ export const SignInForm = () => {
                 )}
             </div>
 
-            <Card className={cn("sm:w-[456px]", "p-12", "mt-6")}>
+            <Card className={cn("sm:w-114", "p-12", "mt-6")}>
                 <CardHeader className={cn("px-0")}>
                     <CardTitle
                         className={cn(
@@ -238,7 +238,7 @@ export const SignInForm = () => {
                 </CardFooter>
             </Card>
         </div>
-    );
-};
+    )
+}
 
-SignInForm.displayName = "SignInForm";
+SignInForm.displayName = "SignInForm"

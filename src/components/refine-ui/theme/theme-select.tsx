@@ -1,22 +1,22 @@
-"use client";
+"use client"
 
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/button"
 import {
     DropdownMenu,
     DropdownMenuContent,
     DropdownMenuItem,
     DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { cn } from "@/lib/utils";
-import { Check, ChevronDown, Monitor, Moon, Sun } from "lucide-react";
-import React from "react";
-import { useTheme } from "./theme-provider";
+} from "@/components/ui/dropdown-menu"
+import { cn } from "@/lib/utils"
+import { Check, ChevronDown, Monitor, Moon, Sun } from "lucide-react"
+import React from "react"
+import { useTheme } from "./theme-provider"
 
 type ThemeOption = {
-    value: "light" | "dark" | "system";
-    label: string;
-    icon: React.ReactNode;
-};
+    value: "light" | "dark" | "system"
+    label: string
+    icon: React.ReactNode
+}
 
 const themeOptions: ThemeOption[] = [
     {
@@ -34,12 +34,12 @@ const themeOptions: ThemeOption[] = [
         label: "System",
         icon: <Monitor className="h-4 w-4" />,
     },
-];
+]
 
 export function ThemeSelect() {
-    const { theme, setTheme } = useTheme();
+    const { theme, setTheme } = useTheme()
 
-    const currentTheme = themeOptions.find((option) => option.value === theme);
+    const currentTheme = themeOptions.find((option) => option.value === theme)
 
     return (
         <DropdownMenu>
@@ -71,7 +71,7 @@ export function ThemeSelect() {
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end" className="min-w-40 space-y-1">
                 {themeOptions.map((option) => {
-                    const isSelected = theme === option.value;
+                    const isSelected = theme === option.value
 
                     return (
                         <DropdownMenuItem
@@ -90,11 +90,11 @@ export function ThemeSelect() {
                                 <Check className="h-4 w-4 absolute right-2 text-primary" />
                             )}
                         </DropdownMenuItem>
-                    );
+                    )
                 })}
             </DropdownMenuContent>
         </DropdownMenu>
-    );
+    )
 }
 
-ThemeSelect.displayName = "ThemeSelect";
+ThemeSelect.displayName = "ThemeSelect"

@@ -1,31 +1,31 @@
-"use client";
+"use client"
 
 import {
     ChevronLeft,
     ChevronRight,
     ChevronsLeft,
     ChevronsRight,
-} from "lucide-react";
-import { useMemo } from "react";
+} from "lucide-react"
+import { useMemo } from "react"
 
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/button"
 import {
     Select,
     SelectContent,
     SelectItem,
     SelectTrigger,
     SelectValue,
-} from "@/components/ui/select";
-import { cn } from "@/lib/utils";
+} from "@/components/ui/select"
+import { cn } from "@/lib/utils"
 
 type DataTablePaginationProps = {
-    currentPage: number;
-    pageCount: number;
-    setCurrentPage: (page: number) => void;
-    pageSize: number;
-    setPageSize: (size: number) => void;
-    total?: number;
-};
+    currentPage: number
+    pageCount: number
+    setCurrentPage: (page: number) => void
+    pageSize: number
+    setPageSize: (size: number) => void
+    total?: number
+}
 
 export function DataTablePagination({
     currentPage,
@@ -36,15 +36,15 @@ export function DataTablePagination({
     total,
 }: DataTablePaginationProps) {
     const pageSizeOptions = useMemo(() => {
-        const baseOptions = [10, 20, 30, 40, 50];
-        const optionsSet = new Set(baseOptions);
+        const baseOptions = [10, 20, 30, 40, 50]
+        const optionsSet = new Set(baseOptions)
 
         if (!optionsSet.has(pageSize)) {
-            optionsSet.add(pageSize);
+            optionsSet.add(pageSize)
         }
 
-        return Array.from(optionsSet).sort((a, b) => a - b);
-    }, [pageSize]);
+        return Array.from(optionsSet).sort((a, b) => a - b)
+    }, [pageSize])
 
     return (
         <div
@@ -75,7 +75,7 @@ export function DataTablePagination({
                         value={`${pageSize}`}
                         onValueChange={(v) => setPageSize(Number(v))}
                     >
-                        <SelectTrigger className={cn("h-8", "w-[70px]")}>
+                        <SelectTrigger className={cn("h-8", "w-17.5")}>
                             <SelectValue placeholder={pageSize} />
                         </SelectTrigger>
                         <SelectContent side="top">
@@ -140,7 +140,7 @@ export function DataTablePagination({
                 </div>
             </div>
         </div>
-    );
+    )
 }
 
-DataTablePagination.displayName = "DataTablePagination";
+DataTablePagination.displayName = "DataTablePagination"

@@ -1,17 +1,17 @@
-"use client";
+"use client"
 
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/button"
 import {
     Collapsible,
     CollapsibleContent,
     CollapsibleTrigger,
-} from "@/components/ui/collapsible";
+} from "@/components/ui/collapsible"
 import {
     DropdownMenu,
     DropdownMenuContent,
     DropdownMenuItem,
     DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+} from "@/components/ui/dropdown-menu"
 import {
     Sidebar as ShadcnSidebar,
     SidebarContent as ShadcnSidebarContent,
@@ -19,20 +19,20 @@ import {
     SidebarRail as ShadcnSidebarRail,
     SidebarTrigger as ShadcnSidebarTrigger,
     useSidebar as useShadcnSidebar,
-} from "@/components/ui/sidebar";
-import { cn } from "@/lib/utils";
+} from "@/components/ui/sidebar"
+import { cn } from "@/lib/utils"
 import {
     useLink,
     useMenu,
     useRefineOptions,
     type TreeMenuItem,
-} from "@refinedev/core";
-import { ChevronRight, ListIcon } from "lucide-react";
-import React from "react";
+} from "@refinedev/core"
+import { ChevronRight, ListIcon } from "lucide-react"
+import React from "react"
 
 export function Sidebar() {
-    const { open } = useShadcnSidebar();
-    const { menuItems, selectedKey } = useMenu();
+    const { open } = useShadcnSidebar()
+    const { menuItems, selectedKey } = useMenu()
 
     return (
         <ShadcnSidebar collapsible="icon" className={cn("border-none")}>
@@ -64,34 +64,34 @@ export function Sidebar() {
                 ))}
             </ShadcnSidebarContent>
         </ShadcnSidebar>
-    );
+    )
 }
 
 type MenuItemProps = {
-    item: TreeMenuItem;
-    selectedKey?: string;
-};
+    item: TreeMenuItem
+    selectedKey?: string
+}
 
 function SidebarItem({ item, selectedKey }: MenuItemProps) {
-    const { open } = useShadcnSidebar();
+    const { open } = useShadcnSidebar()
 
     if (item.meta?.group) {
-        return <SidebarItemGroup item={item} selectedKey={selectedKey} />;
+        return <SidebarItemGroup item={item} selectedKey={selectedKey} />
     }
 
     if (item.children && item.children.length > 0) {
         if (open) {
-            return <SidebarItemCollapsible item={item} selectedKey={selectedKey} />;
+            return <SidebarItemCollapsible item={item} selectedKey={selectedKey} />
         }
-        return <SidebarItemDropdown item={item} selectedKey={selectedKey} />;
+        return <SidebarItemDropdown item={item} selectedKey={selectedKey} />
     }
 
-    return <SidebarItemLink item={item} selectedKey={selectedKey} />;
+    return <SidebarItemLink item={item} selectedKey={selectedKey} />
 }
 
 function SidebarItemGroup({ item, selectedKey }: MenuItemProps) {
-    const { children } = item;
-    const { open } = useShadcnSidebar();
+    const { children } = item
+    const { open } = useShadcnSidebar()
 
     return (
         <div className={cn("border-t", "border-sidebar-border", "pt-4")}>
@@ -129,11 +129,11 @@ function SidebarItemGroup({ item, selectedKey }: MenuItemProps) {
                 </div>
             )}
         </div>
-    );
+    )
 }
 
 function SidebarItemCollapsible({ item, selectedKey }: MenuItemProps) {
-    const { name, children } = item;
+    const { name, children } = item
 
     const chevronIcon = (
         <ChevronRight
@@ -147,7 +147,7 @@ function SidebarItemCollapsible({ item, selectedKey }: MenuItemProps) {
                 "group-data-[state=open]:rotate-90"
             )}
         />
-    );
+    )
 
     return (
         <Collapsible key={`collapsible-${name}`} className={cn("w-full", "group")}>
@@ -164,12 +164,12 @@ function SidebarItemCollapsible({ item, selectedKey }: MenuItemProps) {
                 ))}
             </CollapsibleContent>
         </Collapsible>
-    );
+    )
 }
 
 function SidebarItemDropdown({ item, selectedKey }: MenuItemProps) {
-    const { children } = item;
-    const Link = useLink();
+    const { children } = item
+    const Link = useLink()
 
     return (
         <DropdownMenu>
@@ -178,8 +178,8 @@ function SidebarItemDropdown({ item, selectedKey }: MenuItemProps) {
             </DropdownMenuTrigger>
             <DropdownMenuContent side="right" align="start">
                 {children?.map((child: TreeMenuItem) => {
-                    const { key: childKey } = child;
-                    const isSelected = childKey === selectedKey;
+                    const { key: childKey } = child
+                    const isSelected = childKey === selectedKey
 
                     return (
                         <DropdownMenuItem key={childKey || child.name} asChild>
@@ -196,22 +196,22 @@ function SidebarItemDropdown({ item, selectedKey }: MenuItemProps) {
                                 <span>{getDisplayName(child)}</span>
                             </Link>
                         </DropdownMenuItem>
-                    );
+                    )
                 })}
             </DropdownMenuContent>
         </DropdownMenu>
-    );
+    )
 }
 
 function SidebarItemLink({ item, selectedKey }: MenuItemProps) {
-    const isSelected = item.key === selectedKey;
+    const isSelected = item.key === selectedKey
 
-    return <SidebarButton item={item} isSelected={isSelected} asLink={true} />;
+    return <SidebarButton item={item} isSelected={isSelected} asLink={true} />
 }
 
 function SidebarHeader() {
-    const { title } = useRefineOptions();
-    const { open, isMobile } = useShadcnSidebar();
+    const { title } = useRefineOptions()
+    const { open, isMobile } = useShadcnSidebar()
 
     return (
         <ShadcnSidebarHeader
@@ -269,17 +269,17 @@ function SidebarHeader() {
                 })}
             />
         </ShadcnSidebarHeader>
-    );
+    )
 }
 
 function getDisplayName(item: TreeMenuItem) {
-    return item.meta?.label ?? item.label ?? item.name;
+    return item.meta?.label ?? item.label ?? item.name
 }
 
 type IconProps = {
-    icon: React.ReactNode;
-    isSelected?: boolean;
-};
+    icon: React.ReactNode
+    isSelected?: boolean
+}
 
 function ItemIcon({ icon, isSelected }: IconProps) {
     return (
@@ -291,16 +291,16 @@ function ItemIcon({ icon, isSelected }: IconProps) {
         >
             {icon ?? <ListIcon />}
         </div>
-    );
+    )
 }
 
 type SidebarButtonProps = React.ComponentProps<typeof Button> & {
-    item: TreeMenuItem;
-    isSelected?: boolean;
-    rightIcon?: React.ReactNode;
-    asLink?: boolean;
-    onClick?: () => void;
-};
+    item: TreeMenuItem
+    isSelected?: boolean
+    rightIcon?: React.ReactNode
+    asLink?: boolean
+    onClick?: () => void
+}
 
 function SidebarButton({
     item,
@@ -311,7 +311,7 @@ function SidebarButton({
     onClick,
     ...props
 }: SidebarButtonProps) {
-    const Link = useLink();
+    const Link = useLink()
 
     const buttonContent = (
         <>
@@ -332,7 +332,7 @@ function SidebarButton({
             </span>
             {rightIcon}
         </>
-    );
+    )
 
     return (
         <Button
@@ -340,10 +340,10 @@ function SidebarButton({
             variant="ghost"
             size="lg"
             className={cn(
-                "flex w-full items-center justify-start gap-2 py-2 !px-3 text-sm",
+                "flex w-full items-center justify-start gap-2 py-2 px-3! text-sm",
                 {
                     "bg-sidebar-primary": isSelected,
-                    "hover:!bg-sidebar-primary/90": isSelected,
+                    "hover:bg-sidebar-primary/90!": isSelected,
                     "text-sidebar-primary-foreground": isSelected,
                     "hover:text-sidebar-primary-foreground": isSelected,
                 },
@@ -360,7 +360,7 @@ function SidebarButton({
                 buttonContent
             )}
         </Button>
-    );
+    )
 }
 
-Sidebar.displayName = "Sidebar";
+Sidebar.displayName = "Sidebar"

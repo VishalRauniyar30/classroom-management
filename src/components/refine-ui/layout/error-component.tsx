@@ -1,14 +1,14 @@
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/button"
 import {
     Tooltip,
     TooltipContent,
     TooltipProvider,
     TooltipTrigger,
-} from "@/components/ui/tooltip";
-import { cn } from "@/lib/utils";
-import { useGo, useResourceParams, useTranslate } from "@refinedev/core";
-import { ChevronLeft, InfoIcon } from "lucide-react";
-import { useEffect, useState } from "react";
+} from "@/components/ui/tooltip"
+import { cn } from "@/lib/utils"
+import { useGo, useResourceParams, useTranslate } from "@refinedev/core"
+import { ChevronLeft, InfoIcon } from "lucide-react"
+import { useEffect, useState } from "react"
 
 /**
  * When the app is navigated to a non-existent route, refine shows a default error page.
@@ -17,12 +17,12 @@ import { useEffect, useState } from "react";
  * @see {@link https://refine.dev/docs/packages/documentation/routers/} for more details.
  */
 export function ErrorComponent() {
-    const [errorMessage, setErrorMessage] = useState<string>();
+    const [errorMessage, setErrorMessage] = useState<string>()
 
-    const translate = useTranslate();
-    const go = useGo();
+    const translate = useTranslate()
+    const go = useGo()
 
-    const { resource, action } = useResourceParams();
+    const { resource, action } = useResourceParams()
 
     useEffect(() => {
         if (resource && action) {
@@ -35,9 +35,9 @@ export function ErrorComponent() {
                     },
                     `You may have forgotten to add the "${action}" component to "${resource?.name}" resource.`
                 )
-            );
+            )
         }
-    }, [resource, action, translate]);
+    }, [resource, action, translate])
 
     return (
         <div
@@ -119,7 +119,7 @@ export function ErrorComponent() {
 
                 <Button
                     onClick={() => {
-                        go({ to: "/" });
+                        go({ to: "/" })
                     }}
                     className={cn("flex", "items-center", "gap-2", "mx-auto")}
                 >
@@ -128,7 +128,7 @@ export function ErrorComponent() {
                 </Button>
             </div>
         </div>
-    );
+    )
 }
 
-ErrorComponent.displayName = "ErrorComponent";
+ErrorComponent.displayName = "ErrorComponent"

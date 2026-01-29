@@ -1,32 +1,32 @@
-"use client";
+"use client"
 
-import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
-import { type BaseKey, useRefreshButton } from "@refinedev/core";
-import { RefreshCcw } from "lucide-react";
-import React from "react";
+import { Button } from "@/components/ui/button"
+import { cn } from "@/lib/utils"
+import { type BaseKey, useRefreshButton } from "@refinedev/core"
+import { RefreshCcw } from "lucide-react"
+import React from "react"
 
 type RefreshButtonProps = {
     /**
      * Resource name for API data interactions. `identifier` of the resource can be used instead of the `name` of the resource.
      * @default Inferred resource name from the route
      */
-    resource?: string;
+    resource?: string
     /**
      * Data item identifier for the actions with the API
      * @default Reads `:id` from the URL
      */
-    recordItemId?: BaseKey;
+    recordItemId?: BaseKey
     /**
      * Target data provider name for API call to be made
      * @default `"default"`
      */
-    dataProviderName?: string;
+    dataProviderName?: string
     /**
      * `meta` property is used when creating the URL for the related action and path.
      */
-    meta?: Record<string, unknown>;
-} & React.ComponentProps<typeof Button>;
+    meta?: Record<string, unknown>
+} & React.ComponentProps<typeof Button>
 
 export const RefreshButton = React.forwardRef<
     React.ComponentRef<typeof Button>,
@@ -45,18 +45,18 @@ export const RefreshButton = React.forwardRef<
             id: recordItemId,
             dataProviderName,
             meta,
-        });
+        })
 
-        const isDisabled = rest.disabled || loading;
+        const isDisabled = rest.disabled || loading
 
         return (
             <Button
                 onClick={(e: React.PointerEvent<HTMLButtonElement>) => {
                     if (isDisabled) {
-                        e.preventDefault();
-                        return;
+                        e.preventDefault()
+                        return
                     }
-                    refresh();
+                    refresh()
                 }}
                 {...rest}
                 ref={ref}
@@ -73,8 +73,8 @@ export const RefreshButton = React.forwardRef<
                     </div>
                 )}
             </Button>
-        );
+        )
     }
-);
+)
 
-RefreshButton.displayName = "RefreshButton";
+RefreshButton.displayName = "RefreshButton"

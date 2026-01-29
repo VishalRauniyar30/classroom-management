@@ -1,9 +1,9 @@
-"use client";
+"use client"
 
-import { useState } from "react";
+import { useState } from "react"
 
-import { InputPassword } from "@/components/refine-ui/form/input-password";
-import { Button } from "@/components/ui/button";
+import { InputPassword } from "@/components/refine-ui/form/input-password"
+import { Button } from "@/components/ui/button"
 import {
     Card,
     CardContent,
@@ -11,33 +11,33 @@ import {
     CardFooter,
     CardHeader,
     CardTitle,
-} from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Separator } from "@/components/ui/separator";
-import { cn } from "@/lib/utils";
+} from "@/components/ui/card"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import { Separator } from "@/components/ui/separator"
+import { cn } from "@/lib/utils"
 import {
     useLink,
     useNotification,
     useRefineOptions,
     useRegister,
-} from "@refinedev/core";
+} from "@refinedev/core"
 
 export const SignUpForm = () => {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [confirmPassword, setConfirmPassword] = useState("");
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+    const [confirmPassword, setConfirmPassword] = useState("")
 
-    const { open } = useNotification();
+    const { open } = useNotification()
 
-    const Link = useLink();
+    const Link = useLink()
 
-    const { title } = useRefineOptions();
+    const { title } = useRefineOptions()
 
-    const { mutate: register } = useRegister();
+    const { mutate: register } = useRegister()
 
     const handleSignUp = async (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
+        e.preventDefault()
 
         if (password !== confirmPassword) {
             open?.({
@@ -45,28 +45,28 @@ export const SignUpForm = () => {
                 message: "Passwords don't match",
                 description:
                     "Please make sure both password fields contain the same value.",
-            });
+            })
 
-            return;
+            return
         }
 
         register({
             email,
             password,
-        });
-    };
+        })
+    }
 
     const handleSignUpWithGoogle = () => {
         register({
             providerName: "google",
-        });
-    };
+        })
+    }
 
     const handleSignUpWithGitHub = () => {
         register({
             providerName: "github",
-        });
-    };
+        })
+    }
 
     return (
         <div
@@ -90,7 +90,7 @@ export const SignUpForm = () => {
                 )}
             </div>
 
-            <Card className={cn("sm:w-[456px]", "p-12", "mt-6")}>
+            <Card className={cn("sm:w-114", "p-12", "mt-6")}>
                 <CardHeader className={cn("px-0")}>
                     <CardTitle
                         className={cn(
@@ -240,7 +240,7 @@ export const SignUpForm = () => {
                 </CardFooter>
             </Card>
         </div>
-    );
-};
+    )
+}
 
-SignUpForm.displayName = "SignUpForm";
+SignUpForm.displayName = "SignUpForm"

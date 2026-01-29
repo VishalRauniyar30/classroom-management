@@ -1,37 +1,37 @@
-"use client";
+"use client"
 
-import { ArrowLeft } from "lucide-react";
-import { useState } from "react";
+import { ArrowLeft } from "lucide-react"
+import { useState } from "react"
 
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/button"
 import {
     Card,
     CardContent,
     CardDescription,
     CardHeader,
     CardTitle,
-} from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { cn } from "@/lib/utils";
-import { useForgotPassword, useLink, useRefineOptions } from "@refinedev/core";
+} from "@/components/ui/card"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import { cn } from "@/lib/utils"
+import { useForgotPassword, useLink, useRefineOptions } from "@refinedev/core"
 
 export const ForgotPasswordForm = () => {
-    const [email, setEmail] = useState("");
+    const [email, setEmail] = useState("")
 
-    const Link = useLink();
+    const Link = useLink()
 
-    const { title } = useRefineOptions();
+    const { title } = useRefineOptions()
 
-    const { mutate: forgotPassword } = useForgotPassword();
+    const { mutate: forgotPassword } = useForgotPassword()
 
     const handleForgotPassword = async (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
+        e.preventDefault()
 
         forgotPassword({
             email,
-        });
-    };
+        })
+    }
 
     return (
         <div
@@ -55,7 +55,7 @@ export const ForgotPasswordForm = () => {
                 )}
             </div>
 
-            <Card className={cn("sm:w-[456px]", "p-12", "mt-6")}>
+            <Card className={cn("sm:w-114", "p-12", "mt-6")}>
                 <CardHeader className={cn("px-0")}>
                     <CardTitle
                         className={cn(
@@ -123,7 +123,7 @@ export const ForgotPasswordForm = () => {
                 </CardContent>
             </Card>
         </div>
-    );
-};
+    )
+}
 
-ForgotPasswordForm.displayName = "ForgotPasswordForm";
+ForgotPasswordForm.displayName = "ForgotPasswordForm"

@@ -1,15 +1,15 @@
-import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
-import { useTranslate } from "@refinedev/core";
-import React from "react";
+import { Button } from "@/components/ui/button"
+import { cn } from "@/lib/utils"
+import { useTranslate } from "@refinedev/core"
+import React from "react"
 
 type UndoableNotificationProps = {
-    message: string;
-    description?: string;
-    undoableTimeout?: number;
-    cancelMutation?: () => void;
-    onClose?: () => void;
-};
+    message: string
+    description?: string
+    undoableTimeout?: number
+    cancelMutation?: () => void
+    onClose?: () => void
+}
 
 export function UndoableNotification({
     message,
@@ -18,20 +18,20 @@ export function UndoableNotification({
     cancelMutation,
     onClose,
 }: UndoableNotificationProps) {
-    const t = useTranslate();
+    const t = useTranslate()
 
     React.useEffect(() => {
         const timer = setTimeout(() => {
-            onClose?.();
-        }, undoableTimeout * 1000);
+            onClose?.()
+        }, undoableTimeout * 1000)
 
-        return () => clearTimeout(timer);
-    }, [onClose, undoableTimeout]);
+        return () => clearTimeout(timer)
+    }, [onClose, undoableTimeout])
 
     const handleUndo = () => {
-        cancelMutation?.();
-        onClose?.();
-    };
+        cancelMutation?.()
+        onClose?.()
+    }
 
     return (
         <div
@@ -78,7 +78,7 @@ export function UndoableNotification({
                 </Button>
             </div>
         </div>
-    );
+    )
 }
 
-UndoableNotification.displayName = "UndoableNotification";
+UndoableNotification.displayName = "UndoableNotification"

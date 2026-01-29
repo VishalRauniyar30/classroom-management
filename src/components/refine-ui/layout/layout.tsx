@@ -1,11 +1,11 @@
-"use client";
+"use client"
 
-import { Header } from "@/components/refine-ui/layout/header";
-import { ThemeProvider } from "@/components/refine-ui/theme/theme-provider";
-import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
-import { cn } from "@/lib/utils";
-import type { PropsWithChildren } from "react";
-import { Sidebar } from "./sidebar";
+import { Header } from "@/components/refine-ui/layout/header"
+import { ThemeProvider } from "@/components/refine-ui/theme/theme-provider"
+import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar"
+import { cn } from "@/lib/utils"
+import type { PropsWithChildren } from "react"
+import { Sidebar } from "./sidebar"
 
 export function Layout({ children }: PropsWithChildren) {
     return (
@@ -36,7 +36,7 @@ export function Layout({ children }: PropsWithChildren) {
                 </SidebarInset>
             </SidebarProvider>
         </ThemeProvider>
-    );
+    )
 }
 
-Layout.displayName = "Layout";
+Layout.displayName = "Layout"

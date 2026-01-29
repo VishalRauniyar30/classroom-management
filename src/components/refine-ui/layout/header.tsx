@@ -1,25 +1,25 @@
-import { UserAvatar } from "@/components/refine-ui/layout/user-avatar";
-import { ThemeToggle } from "@/components/refine-ui/theme/theme-toggle";
+import { UserAvatar } from "@/components/refine-ui/layout/user-avatar"
+import { ThemeToggle } from "@/components/refine-ui/theme/theme-toggle"
 import {
     DropdownMenu,
     DropdownMenuContent,
     DropdownMenuItem,
     DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { SidebarTrigger, useSidebar } from "@/components/ui/sidebar";
-import { cn } from "@/lib/utils";
+} from "@/components/ui/dropdown-menu"
+import { SidebarTrigger, useSidebar } from "@/components/ui/sidebar"
+import { cn } from "@/lib/utils"
 import {
     useActiveAuthProvider,
     useLogout,
     useRefineOptions,
-} from "@refinedev/core";
-import { LogOutIcon } from "lucide-react";
+} from "@refinedev/core"
+import { LogOutIcon } from "lucide-react"
 
 export const Header = () => {
-    const { isMobile } = useSidebar();
+    const { isMobile } = useSidebar()
 
-    return <>{isMobile ? <MobileHeader /> : <DesktopHeader />}</>;
-};
+    return <>{isMobile ? <MobileHeader /> : <DesktopHeader />}</>
+}
 
 function DesktopHeader() {
     return (
@@ -43,13 +43,13 @@ function DesktopHeader() {
             <ThemeToggle />
             <UserDropdown />
         </header>
-    );
+    )
 }
 
 function MobileHeader() {
-    const { open, isMobile } = useSidebar();
+    const { open, isMobile } = useSidebar()
 
-    const { title } = useRefineOptions();
+    const { title } = useRefineOptions()
 
     return (
         <header
@@ -114,16 +114,16 @@ function MobileHeader() {
 
             <ThemeToggle className={cn("h-8", "w-8")} />
         </header>
-    );
+    )
 }
 
 const UserDropdown = () => {
-    const { mutate: logout, isPending: isLoggingOut } = useLogout();
+    const { mutate: logout, isPending: isLoggingOut } = useLogout()
 
-    const authProvider = useActiveAuthProvider();
+    const authProvider = useActiveAuthProvider()
 
     if (!authProvider?.getIdentity) {
-        return null;
+        return null
     }
 
     return (
@@ -134,7 +134,7 @@ const UserDropdown = () => {
             <DropdownMenuContent align="end">
                 <DropdownMenuItem
                     onClick={() => {
-                        logout();
+                        logout()
                     }}
                 >
                     <LogOutIcon
@@ -146,9 +146,9 @@ const UserDropdown = () => {
                 </DropdownMenuItem>
             </DropdownMenuContent>
         </DropdownMenu>
-    );
-};
+    )
+}
 
-Header.displayName = "Header";
-MobileHeader.displayName = "MobileHeader";
-DesktopHeader.displayName = "DesktopHeader";
+Header.displayName = "Header"
+MobileHeader.displayName = "MobileHeader"
+DesktopHeader.displayName = "DesktopHeader"

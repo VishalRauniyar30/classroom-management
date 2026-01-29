@@ -1,14 +1,14 @@
-"use client";
+"use client"
 
-import { useTranslate, type CrudOperators } from "@refinedev/core";
-import type { Column, Table as ReactTable } from "@tanstack/react-table";
-import { Check, ChevronsUpDown, ListFilter, X } from "lucide-react";
-import { useEffect, useMemo, useState } from "react";
-import type { DateRange } from "react-day-picker";
+import { useTranslate, type CrudOperators } from "@refinedev/core"
+import type { Column, Table as ReactTable } from "@tanstack/react-table"
+import { Check, ChevronsUpDown, ListFilter, X } from "lucide-react"
+import { useEffect, useMemo, useState } from "react"
+import type { DateRange } from "react-day-picker"
 
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Calendar } from "@/components/ui/calendar";
+import { Badge } from "@/components/ui/badge"
+import { Button } from "@/components/ui/button"
+import { Calendar } from "@/components/ui/calendar"
 import {
     Command,
     CommandEmpty,
@@ -16,25 +16,25 @@ import {
     CommandInput,
     CommandItem,
     CommandList,
-} from "@/components/ui/command";
-import { Input } from "@/components/ui/input";
+} from "@/components/ui/command"
+import { Input } from "@/components/ui/input"
 import {
     Popover,
     PopoverContent,
     PopoverTrigger,
-} from "@/components/ui/popover";
-import { Separator } from "@/components/ui/separator";
-import { cn } from "@/lib/utils";
+} from "@/components/ui/popover"
+import { Separator } from "@/components/ui/separator"
+import { cn } from "@/lib/utils"
 
 export type DataTableFilterDropdownProps<TData> = {
-    column: Column<TData>;
-    contentClassName?: string;
-    triggerClassName?: string;
+    column: Column<TData>
+    contentClassName?: string
+    triggerClassName?: string
     children: (args: {
-        isOpen: boolean;
-        setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
-    }) => React.ReactNode;
-};
+        isOpen: boolean
+        setIsOpen: React.Dispatch<React.SetStateAction<boolean>>
+    }) => React.ReactNode
+}
 
 export function DataTableFilterDropdown<TData>({
     column,
@@ -42,9 +42,9 @@ export function DataTableFilterDropdown<TData>({
     contentClassName,
     children,
 }: DataTableFilterDropdownProps<TData>) {
-    const [isOpen, setIsOpen] = useState(false);
+    const [isOpen, setIsOpen] = useState(false)
 
-    const isFiltered = column.getIsFiltered();
+    const isFiltered = column.getIsFiltered()
 
     return (
         <Popover open={isOpen} onOpenChange={setIsOpen}>
@@ -63,7 +63,7 @@ export function DataTableFilterDropdown<TData>({
                         triggerClassName
                     )}
                 >
-                    <ListFilter className={cn("!h-3", "!w-3")} />
+                    <ListFilter className={cn("h-3!", "w-3!")} />
                 </Button>
             </PopoverTrigger>
             <PopoverContent
@@ -73,16 +73,16 @@ export function DataTableFilterDropdown<TData>({
                 {children({ isOpen, setIsOpen })}
             </PopoverContent>
         </Popover>
-    );
+    )
 }
 
 type DataTableFilterDropdownActionsProps = {
-    className?: string;
-    isClearDisabled?: boolean;
-    isApplyDisabled?: boolean;
-    onClear: () => void;
-    onApply: () => void;
-};
+    className?: string
+    isClearDisabled?: boolean
+    isApplyDisabled?: boolean
+    onClear: () => void
+    onApply: () => void
+}
 
 export function DataTableFilterDropdownActions({
     className,
@@ -91,7 +91,7 @@ export function DataTableFilterDropdownActions({
     onClear,
     onApply,
 }: DataTableFilterDropdownActionsProps) {
-    const t = useTranslate();
+    const t = useTranslate()
 
     return (
         <div
@@ -115,7 +115,7 @@ export function DataTableFilterDropdownActions({
                     "text-muted-foreground"
                 )}
                 onClick={() => {
-                    onClear();
+                    onClear()
                 }}
             >
                 <X className={cn("w-3.5", "h-3.5", "text-muted-foreground")} />
@@ -127,22 +127,22 @@ export function DataTableFilterDropdownActions({
                 disabled={isApplyDisabled}
                 className={cn("rounded-sm", "text-xs", "font-semibold")}
                 onClick={() => {
-                    onApply();
+                    onApply()
                 }}
             >
                 {t("buttons.apply", "Apply")}
             </Button>
         </div>
-    );
+    )
 }
 
 export type DataTableFilterDropdownTextProps<TData> = {
-    column: Column<TData>;
-    table: ReactTable<TData>;
-    defaultOperator?: CrudOperators;
-    operators?: CrudOperators[];
-    placeholder?: string;
-};
+    column: Column<TData>
+    table: ReactTable<TData>
+    defaultOperator?: CrudOperators
+    operators?: CrudOperators[]
+    placeholder?: string
+}
 
 export function DataTableFilterDropdownText<TData>({
     column,
@@ -170,7 +170,7 @@ export function DataTableFilterDropdownText<TData>({
     defaultOperator = "eq",
     placeholder,
 }: DataTableFilterDropdownTextProps<TData>) {
-    const t = useTranslate();
+    const t = useTranslate()
 
     return (
         <DataTableFilterInput
@@ -186,21 +186,21 @@ export function DataTableFilterDropdownText<TData>({
                     }
                     value={value}
                     onChange={(event) => {
-                        onChange(event.target.value);
+                        onChange(event.target.value)
                     }}
                 />
             )}
         />
-    );
+    )
 }
 
 export type DataTableFilterDropdownNumericProps<TData> = {
-    column: Column<TData>;
-    table: ReactTable<TData>;
-    defaultOperator?: CrudOperators;
-    operators?: CrudOperators[];
-    placeholder?: string;
-};
+    column: Column<TData>
+    table: ReactTable<TData>
+    defaultOperator?: CrudOperators
+    operators?: CrudOperators[]
+    placeholder?: string
+}
 
 export function DataTableFilterDropdownNumeric<TData>({
     column,
@@ -209,7 +209,7 @@ export function DataTableFilterDropdownNumeric<TData>({
     defaultOperator = "eq",
     placeholder,
 }: DataTableFilterDropdownNumericProps<TData>) {
-    const t = useTranslate();
+    const t = useTranslate()
 
     return (
         <DataTableFilterInput
@@ -225,24 +225,24 @@ export function DataTableFilterDropdownNumeric<TData>({
                     }
                     value={value}
                     onChange={(event) => {
-                        onChange(event.target.value);
+                        onChange(event.target.value)
                     }}
                 />
             )}
         />
-    );
+    )
 }
 
 export type DataTableFilterComboboxProps<TData> = {
-    column: Column<TData>;
-    table?: ReactTable<TData>;
-    options: { label: string; value: string }[];
-    defaultOperator?: CrudOperators;
-    operators?: CrudOperators[];
-    placeholder?: string;
-    noResultsText?: string;
-    multiple?: boolean;
-};
+    column: Column<TData>
+    table?: ReactTable<TData>
+    options: { label: string; value: string }[]
+    defaultOperator?: CrudOperators
+    operators?: CrudOperators[]
+    placeholder?: string
+    noResultsText?: string
+    multiple?: boolean
+}
 
 export function DataTableFilterCombobox<TData>({
     column,
@@ -254,8 +254,8 @@ export function DataTableFilterCombobox<TData>({
     noResultsText,
     multiple = false,
 }: DataTableFilterComboboxProps<TData>) {
-    const t = useTranslate();
-    const [isOpen, setIsOpen] = useState(false);
+    const t = useTranslate()
+    const [isOpen, setIsOpen] = useState(false)
 
     return (
         <DataTableFilterInput
@@ -272,50 +272,50 @@ export function DataTableFilterCombobox<TData>({
                             : []
                     : value && typeof value === "string"
                         ? [value]
-                        : [];
+                        : []
 
                 const handleSelect = (optionValue: string) => {
                     if (multiple) {
                         const newValues = currentValues.includes(optionValue)
                             ? currentValues.filter((v) => v !== optionValue)
-                            : [...currentValues, optionValue];
-                        onChange(newValues);
+                            : [...currentValues, optionValue]
+                        onChange(newValues)
                     } else {
-                        onChange(optionValue);
-                        setIsOpen(false);
+                        onChange(optionValue)
+                        setIsOpen(false)
                     }
-                };
+                }
 
                 const handleRemove = (optionValue: string) => {
                     if (multiple) {
-                        const newValues = currentValues.filter((v) => v !== optionValue);
-                        onChange(newValues);
+                        const newValues = currentValues.filter((v) => v !== optionValue)
+                        onChange(newValues)
                     }
-                };
+                }
 
                 const getDisplayText = () => {
                     if (currentValues.length === 0) {
                         return (
                             placeholder ?? t("table.filter.combobox.placeholder", "Select...")
-                        );
+                        )
                     }
 
                     if (multiple) {
-                        return `${currentValues.length} selected`;
+                        return `${currentValues.length} selected`
                     }
 
                     const selectedOption = options.find(
                         (option) => option.value === currentValues[0]
-                    );
-                    return selectedOption ? selectedOption.label : currentValues[0];
-                };
+                    )
+                    return selectedOption ? selectedOption.label : currentValues[0]
+                }
 
                 const getSelectedLabels = () => {
                     return currentValues.map((val) => {
-                        const option = options.find((opt) => opt.value === val);
-                        return { label: option ? option.label : val, value: val };
-                    });
-                };
+                        const option = options.find((opt) => opt.value === val)
+                        return { label: option ? option.label : val, value: val }
+                    })
+                }
 
                 return (
                     <Popover open={isOpen} onOpenChange={setIsOpen}>
@@ -369,12 +369,12 @@ export function DataTableFilterCombobox<TData>({
                                                                 "transition-colors"
                                                             )}
                                                             onClick={(e) => {
-                                                                e.preventDefault();
-                                                                e.stopPropagation();
-                                                                handleRemove(val);
+                                                                e.preventDefault()
+                                                                e.stopPropagation()
+                                                                handleRemove(val)
                                                             }}
                                                         >
-                                                            <X className={cn("!h-2", "!w-2")} />
+                                                            <X className={cn("h-2!", "w-2!")} />
                                                         </span>
                                                     </Badge>
                                                 ))}
@@ -410,7 +410,7 @@ export function DataTableFilterCombobox<TData>({
                                 </div>
                             </Button>
                         </PopoverTrigger>
-                        <PopoverContent className={cn("w-[200px]", "p-0")} align="start">
+                        <PopoverContent className={cn("w-50", "p-0")} align="start">
                             <Command>
                                 <CommandInput
                                     placeholder={t("table.filter.combobox.search", "Search...")}
@@ -449,57 +449,57 @@ export function DataTableFilterCombobox<TData>({
                             </Command>
                         </PopoverContent>
                     </Popover>
-                );
+                )
             }}
         />
-    );
+    )
 }
 
 export type DataTableFilterDropdownDateSinglePickerProps<TData> = {
-    column: Column<TData>;
-    defaultOperator?: CrudOperators;
-    formatDate?: (date: Date | undefined) => string | undefined;
-};
+    column: Column<TData>
+    defaultOperator?: CrudOperators
+    formatDate?: (date: Date | undefined) => string | undefined
+}
 
 export function DataTableFilterDropdownDateSinglePicker<TData>({
     column,
     defaultOperator = "eq",
     formatDate,
 }: DataTableFilterDropdownDateSinglePickerProps<TData>) {
-    const columnFilterValue = column.getFilterValue() as string;
+    const columnFilterValue = column.getFilterValue() as string
 
     const parseDate = (value: string | undefined): Date | undefined => {
-        if (!value) return undefined;
+        if (!value) return undefined
 
-        const date = new Date(value);
+        const date = new Date(value)
 
-        if (Number.isNaN(date.getTime())) return undefined;
-        return date;
-    };
+        if (Number.isNaN(date.getTime())) return undefined
+        return date
+    }
 
     const [filterValue, setFilterValue] = useState<Date | undefined>(() =>
         parseDate(columnFilterValue)
-    );
+    )
 
     useEffect(() => {
         column.columnDef.meta = {
             ...column.columnDef.meta,
             filterOperator: defaultOperator,
-        };
-    }, [defaultOperator, column]);
+        }
+    }, [defaultOperator, column])
 
     useEffect(() => {
-        setFilterValue(parseDate(columnFilterValue));
-    }, [columnFilterValue]);
+        setFilterValue(parseDate(columnFilterValue))
+    }, [columnFilterValue])
 
-    const hasDate = !!filterValue;
+    const hasDate = !!filterValue
 
     const handleApply = () => {
-        if (!filterValue) return;
+        if (!filterValue) return
 
-        const value = formatDate?.(filterValue) ?? filterValue.toISOString();
-        column.setFilterValue(value);
-    };
+        const value = formatDate?.(filterValue) ?? filterValue.toISOString()
+        column.setFilterValue(value)
+    }
 
     return (
         <DataTableFilterDropdown
@@ -511,10 +511,10 @@ export function DataTableFilterDropdownDateSinglePicker<TData>({
                     <div
                         className={cn("flex", "flex-col", "items-center")}
                         onKeyDown={(event) => {
-                            if (!hasDate) return;
+                            if (!hasDate) return
                             if (event.key === "Enter") {
-                                handleApply();
-                                setIsOpen(false);
+                                handleApply()
+                                setIsOpen(false)
                             }
                         }}
                     >
@@ -522,7 +522,7 @@ export function DataTableFilterDropdownDateSinglePicker<TData>({
                             mode="single"
                             selected={filterValue}
                             onSelect={(date) => {
-                                setFilterValue(date);
+                                setFilterValue(date)
                             }}
                         />
 
@@ -534,42 +534,42 @@ export function DataTableFilterDropdownDateSinglePicker<TData>({
                             className={cn("p-4")}
                             isApplyDisabled={!hasDate}
                             onClear={() => {
-                                column.setFilterValue(undefined);
-                                setFilterValue(undefined);
-                                setIsOpen(false);
+                                column.setFilterValue(undefined)
+                                setFilterValue(undefined)
+                                setIsOpen(false)
                             }}
                             onApply={() => {
-                                handleApply();
-                                setIsOpen(false);
+                                handleApply()
+                                setIsOpen(false)
                             }}
                         />
                     </div>
-                );
+                )
             }}
         </DataTableFilterDropdown>
-    );
+    )
 }
 
 export type DataTableFilterDropdownDateRangePickerProps<TData> = {
-    column: Column<TData>;
-    defaultOperator?: CrudOperators;
-    formatDateRange?: (dateRange: DateRange | undefined) => string[] | undefined;
-};
+    column: Column<TData>
+    defaultOperator?: CrudOperators
+    formatDateRange?: (dateRange: DateRange | undefined) => string[] | undefined
+}
 
 export function DataTableFilterDropdownDateRangePicker<TData>({
     column,
     defaultOperator = "between",
     formatDateRange,
 }: DataTableFilterDropdownDateRangePickerProps<TData>) {
-    const columnFilterValue = column.getFilterValue() as string[];
+    const columnFilterValue = column.getFilterValue() as string[]
 
     const parseDateRange = (
         value: string[] | undefined
     ): DateRange | undefined => {
-        if (!value || !Array.isArray(value) || value.length !== 2) return undefined;
+        if (!value || !Array.isArray(value) || value.length !== 2) return undefined
 
-        const from = value[0] ? new Date(value[0]) : undefined;
-        const to = value[1] ? new Date(value[1]) : undefined;
+        const from = value[0] ? new Date(value[0]) : undefined
+        const to = value[1] ? new Date(value[1]) : undefined
 
         if (
             !from ||
@@ -577,37 +577,37 @@ export function DataTableFilterDropdownDateRangePicker<TData>({
             Number.isNaN(from.getTime()) ||
             Number.isNaN(to.getTime())
         )
-            return undefined;
-        return { from, to };
-    };
+            return undefined
+        return { from, to }
+    }
 
     const [filterValue, setFilterValue] = useState<DateRange | undefined>(() =>
         parseDateRange(columnFilterValue)
-    );
+    )
 
     useEffect(() => {
         column.columnDef.meta = {
             ...column.columnDef.meta,
             filterOperator: defaultOperator,
-        };
-    }, [defaultOperator, column]);
+        }
+    }, [defaultOperator, column])
 
     useEffect(() => {
-        setFilterValue(parseDateRange(columnFilterValue));
+        setFilterValue(parseDateRange(columnFilterValue))
         // eslint-disable-next-line react-hooks/exhaustive-deps -- objects are always different
-    }, [JSON.stringify(columnFilterValue)]);
+    }, [JSON.stringify(columnFilterValue)])
 
-    const hasDateRange = filterValue?.from && filterValue?.to;
+    const hasDateRange = filterValue?.from && filterValue?.to
 
     const handleApply = () => {
-        if (!filterValue?.from || !filterValue?.to) return;
+        if (!filterValue?.from || !filterValue?.to) return
 
         const values = formatDateRange?.(filterValue) ?? [
             filterValue.from.toISOString(),
             filterValue.to.toISOString(),
-        ];
-        column.setFilterValue(values);
-    };
+        ]
+        column.setFilterValue(values)
+    }
 
     return (
         <DataTableFilterDropdown
@@ -619,10 +619,10 @@ export function DataTableFilterDropdownDateRangePicker<TData>({
                     <div
                         className={cn("flex", "flex-col", "items-center")}
                         onKeyDown={(event) => {
-                            if (!hasDateRange) return;
+                            if (!hasDateRange) return
                             if (event.key === "Enter") {
-                                handleApply();
-                                setIsOpen(false);
+                                handleApply()
+                                setIsOpen(false)
                             }
                         }}
                     >
@@ -634,7 +634,7 @@ export function DataTableFilterDropdownDateRangePicker<TData>({
                                 setFilterValue({
                                     from: date?.from,
                                     to: date?.to,
-                                });
+                                })
                             }}
                         />
 
@@ -646,32 +646,32 @@ export function DataTableFilterDropdownDateRangePicker<TData>({
                             className={cn("p-4")}
                             isApplyDisabled={!hasDateRange}
                             onClear={() => {
-                                column.setFilterValue(undefined);
-                                setFilterValue(undefined);
-                                setIsOpen(false);
+                                column.setFilterValue(undefined)
+                                setFilterValue(undefined)
+                                setIsOpen(false)
                             }}
                             onApply={() => {
-                                handleApply();
-                                setIsOpen(false);
+                                handleApply()
+                                setIsOpen(false)
                             }}
                         />
                     </div>
-                );
+                )
             }}
         </DataTableFilterDropdown>
-    );
+    )
 }
 
 export type DataTableFilterInputProps<TData> = {
-    column: Column<TData>;
-    table?: ReactTable<TData>;
-    defaultOperator?: CrudOperators;
-    operators?: CrudOperators[];
+    column: Column<TData>
+    table?: ReactTable<TData>
+    defaultOperator?: CrudOperators
+    operators?: CrudOperators[]
     renderInput: (props: {
-        value: string | string[];
-        onChange: (value: string | string[]) => void;
-    }) => React.ReactNode;
-};
+        value: string | string[]
+        onChange: (value: string | string[]) => void
+    }) => React.ReactNode
+}
 
 export function DataTableFilterInput<TData>({
     column: columnFromProps,
@@ -682,42 +682,42 @@ export function DataTableFilterInput<TData>({
 }: DataTableFilterInputProps<TData>) {
     const [filterValue, setFilterValue] = useState(
         (columnFromProps.getFilterValue() as string | string[]) || ""
-    );
+    )
 
     const [operator, setOperator] = useState<CrudOperators>(() => {
         if (!tableFromProps) {
-            return defaultOperatorFromProps || "eq";
+            return defaultOperatorFromProps || "eq"
         }
 
         const columnFilter = tableFromProps
             .getState()
             .columnFilters.find((filter) => {
-                return filter.id === columnFromProps.id;
-            });
+                return filter.id === columnFromProps.id
+            })
 
         if (columnFilter && "operator" in columnFilter) {
-            return columnFilter.operator as CrudOperators;
+            return columnFilter.operator as CrudOperators
         }
 
-        return defaultOperatorFromProps || "eq";
-    });
+        return defaultOperatorFromProps || "eq"
+    })
 
     const handleApply = () => {
-        columnFromProps.setFilterValue(filterValue);
-    };
+        columnFromProps.setFilterValue(filterValue)
+    }
 
     const handleClear = () => {
-        columnFromProps.setFilterValue(undefined);
-        setFilterValue("");
-    };
+        columnFromProps.setFilterValue(undefined)
+        setFilterValue("")
+    }
 
     const handleOperatorChange = (value: CrudOperators) => {
-        setOperator(value);
+        setOperator(value)
         columnFromProps.columnDef.meta = {
             ...columnFromProps.columnDef.meta,
             filterOperator: value,
-        };
-    };
+        }
+    }
 
     return (
         <DataTableFilterDropdown column={columnFromProps}>
@@ -733,8 +733,8 @@ export function DataTableFilterInput<TData>({
                         )}
                         onKeyDown={(event) => {
                             if (event.key === "Enter") {
-                                handleApply();
-                                setIsOpen(false);
+                                handleApply()
+                                setIsOpen(false)
                             }
                         }}
                     >
@@ -758,19 +758,19 @@ export function DataTableFilterInput<TData>({
                         </div>
                         <DataTableFilterDropdownActions
                             onClear={() => {
-                                handleClear();
-                                setIsOpen(false);
+                                handleClear()
+                                setIsOpen(false)
                             }}
                             onApply={() => {
-                                handleApply();
-                                setIsOpen(false);
+                                handleApply()
+                                setIsOpen(false)
                             }}
                         />
                     </div>
-                );
+                )
             }}
         </DataTableFilterDropdown>
-    );
+    )
 }
 
 const CRUD_OPERATOR_LABELS: Record<
@@ -874,16 +874,16 @@ const CRUD_OPERATOR_LABELS: Record<
         i18nKey: "table.filter.operator.nes",
         defaultLabel: "Not equals (case sensitive)",
     },
-};
+}
 
 export type DataTableFilterOperatorSelectProps = {
-    value: CrudOperators;
-    onValueChange: (value: CrudOperators) => void;
-    operators?: CrudOperators[];
-    placeholder?: string;
-    triggerClassName?: string;
-    contentClassName?: string;
-};
+    value: CrudOperators
+    onValueChange: (value: CrudOperators) => void
+    operators?: CrudOperators[]
+    placeholder?: string
+    triggerClassName?: string
+    contentClassName?: string
+}
 
 export function DataTableFilterOperatorSelect({
     value,
@@ -893,27 +893,27 @@ export function DataTableFilterOperatorSelect({
     triggerClassName,
     contentClassName,
 }: DataTableFilterOperatorSelectProps) {
-    const t = useTranslate();
+    const t = useTranslate()
 
-    const [open, setOpen] = useState(false);
+    const [open, setOpen] = useState(false)
 
     const operators = useMemo(() => {
         return Object.entries(CRUD_OPERATOR_LABELS).filter(([operator]) =>
             operatorsFromProps?.includes(operator as CrudOperators)
-        );
-    }, [operatorsFromProps]);
+        )
+    }, [operatorsFromProps])
 
     const selectedLabel = t(
         CRUD_OPERATOR_LABELS[value as Exclude<CrudOperators, "or" | "and">].i18nKey,
         CRUD_OPERATOR_LABELS[value as Exclude<CrudOperators, "or" | "and">]
             .defaultLabel
-    );
+    )
     const placeholderText =
-        placeholder ?? t("table.filter.operator.placeholder", "Search operator...");
+        placeholder ?? t("table.filter.operator.placeholder", "Search operator...")
     const noResultsText = t(
         "table.filter.operator.noResults",
         "No operator found."
-    );
+    )
 
     return (
         <Popover open={open} onOpenChange={setOpen}>
@@ -948,8 +948,8 @@ export function DataTableFilterOperatorSelect({
                                     key={op}
                                     value={op}
                                     onSelect={() => {
-                                        onValueChange(op as CrudOperators);
-                                        setOpen(false);
+                                        onValueChange(op as CrudOperators)
+                                        setOpen(false)
                                     }}
                                 >
                                     <Check
@@ -968,18 +968,18 @@ export function DataTableFilterOperatorSelect({
                 </Command>
             </PopoverContent>
         </Popover>
-    );
+    )
 }
 
-DataTableFilterDropdown.displayName = "DataTableFilterDropdown";
-DataTableFilterDropdownText.displayName = "DataTableFilterDropdownText";
-DataTableFilterCombobox.displayName = "DataTableFilterCombobox";
+DataTableFilterDropdown.displayName = "DataTableFilterDropdown"
+DataTableFilterDropdownText.displayName = "DataTableFilterDropdownText"
+DataTableFilterCombobox.displayName = "DataTableFilterCombobox"
 DataTableFilterDropdownDateRangePicker.displayName =
-    "DataTableFilterDropdownDateRangePicker";
-DataTableFilterOperatorSelect.displayName = "DataTableFilterOperatorSelect";
-DataTableFilterDropdownActions.displayName = "DataTableFilterDropdownActions";
-DataTableFilterDropdownNumeric.displayName = "DataTableFilterDropdownNumeric";
-DataTableFilterInput.displayName = "DataTableFilterInput";
-DataTableFilterOperatorSelect.displayName = "DataTableFilterOperatorSelect";
+    "DataTableFilterDropdownDateRangePicker"
+DataTableFilterOperatorSelect.displayName = "DataTableFilterOperatorSelect"
+DataTableFilterDropdownActions.displayName = "DataTableFilterDropdownActions"
+DataTableFilterDropdownNumeric.displayName = "DataTableFilterDropdownNumeric"
+DataTableFilterInput.displayName = "DataTableFilterInput"
+DataTableFilterOperatorSelect.displayName = "DataTableFilterOperatorSelect"
 DataTableFilterDropdownDateSinglePicker.displayName =
-    "DataTableFilterDropdownDateSinglePicker";
+    "DataTableFilterDropdownDateSinglePicker"

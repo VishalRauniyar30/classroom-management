@@ -1,32 +1,32 @@
-"use client";
+"use client"
 
-import { useTheme } from "@/components/refine-ui/theme/theme-provider";
-import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
-import { Monitor, Moon, Sun } from "lucide-react";
+import { useTheme } from "@/components/refine-ui/theme/theme-provider"
+import { Button } from "@/components/ui/button"
+import { cn } from "@/lib/utils"
+import { Monitor, Moon, Sun } from "lucide-react"
 
 type ThemeToggleProps = {
-    className?: string;
-};
+    className?: string
+}
 
 export function ThemeToggle({ className }: ThemeToggleProps) {
-    const { theme, setTheme } = useTheme();
+    const { theme, setTheme } = useTheme()
 
     const cycleTheme = () => {
         switch (theme) {
             case "light":
-                setTheme("dark");
-                break;
+                setTheme("dark")
+                break
             case "dark":
-                setTheme("system");
-                break;
+                setTheme("system")
+                break
             case "system":
-                setTheme("light");
-                break;
+                setTheme("light")
+                break
             default:
-                setTheme("light");
+                setTheme("light")
         }
-    };
+    }
 
     return (
         <Button
@@ -87,7 +87,7 @@ export function ThemeToggle({ className }: ThemeToggleProps) {
             />
             <span className="sr-only">Toggle theme (Light → Dark → System)</span>
         </Button>
-    );
+    )
 }
 
-ThemeToggle.displayName = "ThemeToggle";
+ThemeToggle.displayName = "ThemeToggle"

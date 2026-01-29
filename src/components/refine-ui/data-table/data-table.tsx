@@ -1,13 +1,13 @@
-"use client";
+"use client"
 
-import type { BaseRecord, HttpError } from "@refinedev/core";
-import type { UseTableReturnType } from "@refinedev/react-table";
-import type { Column } from "@tanstack/react-table";
-import { flexRender } from "@tanstack/react-table";
-import { Loader2 } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import type { BaseRecord, HttpError } from "@refinedev/core"
+import type { UseTableReturnType } from "@refinedev/react-table"
+import type { Column } from "@tanstack/react-table"
+import { flexRender } from "@tanstack/react-table"
+import { Loader2 } from "lucide-react"
+import { useEffect, useRef, useState } from "react"
 
-import { DataTablePagination } from "@/components/refine-ui/data-table/data-table-pagination";
+import { DataTablePagination } from "@/components/refine-ui/data-table/data-table-pagination"
 import {
     Table,
     TableBody,
@@ -15,12 +15,12 @@ import {
     TableHead,
     TableHeader,
     TableRow,
-} from "@/components/ui/table";
-import { cn } from "@/lib/utils";
+} from "@/components/ui/table"
+import { cn } from "@/lib/utils"
 
 type DataTableProps<TData extends BaseRecord> = {
-    table: UseTableReturnType<TData, HttpError>;
-};
+    table: UseTableReturnType<TData, HttpError>
+}
 
 export function DataTable<TData extends BaseRecord>({
     table,
@@ -35,48 +35,48 @@ export function DataTable<TData extends BaseRecord>({
             pageSize,
             setPageSize,
         },
-    } = table;
+    } = table
 
-    const columns = getAllColumns();
-    const leafColumns = table.reactTable.getAllLeafColumns();
-    const isLoading = tableQuery.isLoading;
+    const columns = getAllColumns()
+    const leafColumns = table.reactTable.getAllLeafColumns()
+    const isLoading = tableQuery.isLoading
 
-    const tableContainerRef = useRef<HTMLDivElement>(null);
-    const tableRef = useRef<HTMLTableElement>(null);
+    const tableContainerRef = useRef<HTMLDivElement>(null)
+    const tableRef = useRef<HTMLTableElement>(null)
     const [isOverflowing, setIsOverflowing] = useState({
         horizontal: false,
         vertical: false,
-    });
+    })
 
     useEffect(() => {
         const checkOverflow = () => {
             if (tableRef.current && tableContainerRef.current) {
-                const table = tableRef.current;
-                const container = tableContainerRef.current;
+                const table = tableRef.current
+                const container = tableContainerRef.current
 
-                const horizontalOverflow = table.offsetWidth > container.clientWidth;
-                const verticalOverflow = table.offsetHeight > container.clientHeight;
+                const horizontalOverflow = table.offsetWidth > container.clientWidth
+                const verticalOverflow = table.offsetHeight > container.clientHeight
 
                 setIsOverflowing({
                     horizontal: horizontalOverflow,
                     vertical: verticalOverflow,
-                });
+                })
             }
-        };
+        }
 
-        checkOverflow();
+        checkOverflow()
 
         // Check on window resize
-        window.addEventListener("resize", checkOverflow);
+        window.addEventListener("resize", checkOverflow)
 
         // Check when table data changes
-        const timeoutId = setTimeout(checkOverflow, 100);
+        const timeoutId = setTimeout(checkOverflow, 100)
 
         return () => {
-            window.removeEventListener("resize", checkOverflow);
-            clearTimeout(timeoutId);
-        };
-    }, [tableQuery.data?.data, pageSize]);
+            window.removeEventListener("resize", checkOverflow)
+            clearTimeout(timeoutId)
+        }
+    }, [tableQuery.data?.data, pageSize])
 
     return (
         <div className={cn("flex", "flex-col", "flex-1", "gap-4")}>
@@ -86,7 +86,7 @@ export function DataTable<TData extends BaseRecord>({
                         {getHeaderGroups().map((headerGroup) => (
                             <TableRow key={headerGroup.id}>
                                 {headerGroup.headers.map((header) => {
-                                    const isPlaceholder = header.isPlaceholder;
+                                    const isPlaceholder = header.isPlaceholder
 
                                     return (
                                         <TableHead
@@ -107,7 +107,7 @@ export function DataTable<TData extends BaseRecord>({
                                                 </div>
                                             )}
                                         </TableHead>
-                                    );
+                                    )
                                 })}
                             </TableRow>
                         ))}
@@ -184,10 +184,10 @@ export function DataTable<TData extends BaseRecord>({
                                                         )}
                                                     </div>
                                                 </TableCell>
-                                            );
+                                            )
                                         })}
                                     </TableRow>
-                                );
+                                )
                             })
                         ) : (
                             <DataTableNoData
@@ -209,15 +209,15 @@ export function DataTable<TData extends BaseRecord>({
                 />
             )}
         </div>
-    );
+    )
 }
 
 function DataTableNoData({
     isOverflowing,
     columnsLength,
 }: {
-    isOverflowing: { horizontal: boolean; vertical: boolean };
-    columnsLength: number;
+    isOverflowing: { horizontal: boolean; vertical: boolean }
+    columnsLength: number
 }) {
     return (
         <TableRow className="hover:bg-transparent">
@@ -255,24 +255,24 @@ function DataTableNoData({
                 </div>
             </TableCell>
         </TableRow>
-    );
+    )
 }
 
 export function getCommonStyles<TData>({
     column,
     isOverflowing,
 }: {
-    column: Column<TData>;
+    column: Column<TData>
     isOverflowing: {
-        horizontal: boolean;
-        vertical: boolean;
-    };
+        horizontal: boolean
+        vertical: boolean
+    }
 }): React.CSSProperties {
-    const isPinned = column.getIsPinned();
+    const isPinned = column.getIsPinned()
     const isLastLeftPinnedColumn =
-        isPinned === "left" && column.getIsLastColumn("left");
+        isPinned === "left" && column.getIsLastColumn("left")
     const isFirstRightPinnedColumn =
-        isPinned === "right" && column.getIsFirstColumn("right");
+        isPinned === "right" && column.getIsFirstColumn("right")
 
     return {
         boxShadow:
@@ -310,7 +310,7 @@ export function getCommonStyles<TData>({
                 : undefined,
         width: column.getSize(),
         zIndex: isOverflowing.horizontal && isPinned ? 1 : 0,
-    };
+    }
 }
 
-DataTable.displayName = "DataTable";
+DataTable.displayName = "DataTable"

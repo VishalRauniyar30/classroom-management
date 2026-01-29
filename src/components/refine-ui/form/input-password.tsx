@@ -1,14 +1,14 @@
-"use client";
+"use client"
 
-import { Input } from "@/components/ui/input";
-import { cn } from "@/lib/utils";
-import { Eye, EyeOff } from "lucide-react";
-import { useState } from "react";
+import { Input } from "@/components/ui/input"
+import { cn } from "@/lib/utils"
+import { Eye, EyeOff } from "lucide-react"
+import { useState } from "react"
 
-type InputPasswordProps = React.ComponentProps<"input">;
+type InputPasswordProps = React.ComponentProps<"input">
 
 export const InputPassword = ({ className, ...props }: InputPasswordProps) => {
-    const [showPassword, setShowPassword] = useState(false);
+    const [showPassword, setShowPassword] = useState(false)
 
     return (
         <div className={cn("relative")}>
@@ -32,7 +32,7 @@ export const InputPassword = ({ className, ...props }: InputPasswordProps) => {
                 )}
             </button>
         </div>
-    );
-};
+    )
+}
 
-InputPassword.displayName = "InputPassword";
+InputPassword.displayName = "InputPassword"

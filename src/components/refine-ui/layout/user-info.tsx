@@ -1,19 +1,19 @@
-import { UserAvatar } from "@/components/refine-ui/layout/user-avatar";
-import { Skeleton } from "@/components/ui/skeleton";
-import { cn } from "@/lib/utils";
-import { useGetIdentity } from "@refinedev/core";
+import { UserAvatar } from "@/components/refine-ui/layout/user-avatar"
+import { Skeleton } from "@/components/ui/skeleton"
+import { cn } from "@/lib/utils"
+import { useGetIdentity } from "@refinedev/core"
 
 type User = {
-    id: number;
-    firstName: string;
-    lastName: string;
-    fullName: string;
-    email: string;
-    avatar?: string;
-};
+    id: number
+    firstName: string
+    lastName: string
+    fullName: string
+    email: string
+    avatar?: string
+}
 
 export function UserInfo() {
-    const { data: user, isLoading: userIsLoading } = useGetIdentity<User>();
+    const { data: user, isLoading: userIsLoading } = useGetIdentity<User>()
 
     if (userIsLoading || !user) {
         return (
@@ -24,10 +24,10 @@ export function UserInfo() {
                     <Skeleton className={cn("h-4", "w-24")} />
                 </div>
             </div>
-        );
+        )
     }
 
-    const { firstName, lastName, email } = user;
+    const { firstName, lastName, email } = user
 
     return (
         <div className={cn("flex", "items-center", "gap-x-2")}>
@@ -47,7 +47,7 @@ export function UserInfo() {
                 <span className={cn("text-xs", "text-muted-foreground")}>{email}</span>
             </div>
         </div>
-    );
+    )
 }
 
-UserInfo.displayName = "UserInfo";
+UserInfo.displayName = "UserInfo"
