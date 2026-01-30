@@ -10,23 +10,14 @@ import { BookOpen, Building2, ClipboardCheck, GraduationCap, Home, Users } from 
 import { BrowserRouter, Outlet, Route, Routes } from "react-router"
 
 import { Layout } from "@/components/refine-ui/layout/layout"
-import ClassesCreate from "@/pages/classes/create"
-import ClassesList from "@/pages/classes/list"
-import ClassesShow from "@/pages/classes/show"
+import { ClassesCreate, ClassesList, ClassesShow } from "@/pages/classes"
 import DashBoard from "@/pages/dashboard"
-import DepartmentsCreate from "@/pages/departments/create"
-import DepartmentsList from "@/pages/departments/list"
-import DepartmentShow from "@/pages/departments/show"
-import EnrollmentConfirm from "@/pages/enrollments/confirm"
-import EnrollmentsCreate from "@/pages/enrollments/create"
-import EnrollmentsJoin from "@/pages/enrollments/join"
-import FacultyList from "@/pages/faculty/list"
-import FacultyShow from "@/pages/faculty/show"
+import { DepartmentsCreate, DepartmentShow, DepartmentsList } from "@/pages/departments"
+import { EnrollmentConfirm, EnrollmentsCreate, EnrollmentsJoin } from "@/pages/enrollments"
+import { FacultyList, FacultyShow } from "@/pages/faculty"
 import { Login } from "@/pages/login"
 import { Register } from "@/pages/register"
-import SubjectsCreate from "@/pages/subjects/create"
-import SubjectList from "@/pages/subjects/list"
-import SubjectsShow from "@/pages/subjects/show"
+import { SubjectList, SubjectsCreate, SubjectsShow } from "@/pages/subjects"
 import "./App.css"
 import { Toaster } from "./components/refine-ui/notification/toaster"
 import { useNotificationProvider } from "./components/refine-ui/notification/use-notification-provider"
@@ -41,6 +32,7 @@ function App() {
                     <DevtoolsProvider>
                         <Refine
                             dataProvider={dataProvider}
+                            // authProvider={authProvider}
                             notificationProvider={useNotificationProvider()}
                             routerProvider={routerProvider}
                             options={{
