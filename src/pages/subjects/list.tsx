@@ -1,7 +1,8 @@
+import { useMemo, useState } from "react"
+import { useList } from "@refinedev/core"
 import { useTable } from "@refinedev/react-table"
 import { ColumnDef } from "@tanstack/react-table"
 import { Search } from "lucide-react"
-import { useMemo, useState } from "react"
 
 import { CreateButton } from "@/components/refine-ui/buttons/create"
 import { ShowButton } from "@/components/refine-ui/buttons/show"
@@ -10,9 +11,11 @@ import { Breadcrumb } from "@/components/refine-ui/layout/breadcrumb"
 import { ListView } from "@/components/refine-ui/views/list-view"
 import { Badge } from "@/components/ui/badge"
 import { Input } from "@/components/ui/input"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { DEPARTMENT_OPTIONS } from "@/constants"
-import { Subject } from "@/types"
+import {
+    Select, SelectContent, SelectItem,
+    SelectTrigger, SelectValue
+} from "@/components/ui/select"
+import { Department, Subject } from "@/types"
 
 const SubjectList = () => {
     const [searchQuery, setSearchQuery] = useState("")
@@ -35,8 +38,8 @@ const SubjectList = () => {
         filterFn: 'includesString',
     }, {
         id: "department",
-        accessorKey: "department",
-        size: 150,
+        accessorKey: "department.name",
+        size: 200,
         header: () => <p className="column-title">Department</p>,
         cell: ({ getValue }) => (
             <Badge variant="secondary">{getValue<string>()}</Badge>
@@ -44,14 +47,14 @@ const SubjectList = () => {
     }, {
         id: "description",
         accessorKey: "description",
-        size: 300,
+        size: 400,
         header: () => <p className="column-title">Description</p>,
         cell: ({ getValue }) => (
             <span className="truncate line-clamp-2">{getValue<string>()}</span>
         ),
     }, {
         id: "details",
-        size: 140,
+        size: 100,
         header: () => <p className="column-title">Details</p>,
         cell: ({ row }) => (
             <ShowButton
@@ -79,6 +82,15 @@ const SubjectList = () => {
             operator: 'contains' as const,
             value: searchQuery
         }] : []
+
+    const { query: departmentsQuery } = useList<Department>({
+        resource: "departments",
+        pagination: {
+            pageSize: 100
+        }
+    })
+
+    const departments = departmentsQuery.data?.data || []
 
     const subjectTable = useTable<Subject>({
         columns: subjectColumns,
@@ -133,9 +145,9 @@ const SubjectList = () => {
 
                             <SelectContent>
                                 <SelectItem value="all">All Departments</SelectItem>
-                                {DEPARTMENT_OPTIONS.map((department) => (
-                                    <SelectItem value={department.value} key={department.value}>
-                                        {department.label}
+                                {departments.map((department) => (
+                                    <SelectItem value={department.name} key={department.id}>
+                                        {department.name}
                                     </SelectItem>
                                 ))}
                             </SelectContent>
