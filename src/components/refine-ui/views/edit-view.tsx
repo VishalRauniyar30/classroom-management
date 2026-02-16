@@ -1,17 +1,18 @@
 "use client"
 
-import { RefreshButton } from "@/components/refine-ui/buttons/refresh"
-import { Breadcrumb } from "@/components/refine-ui/layout/breadcrumb"
-import { Button } from "@/components/ui/button"
-import { Separator } from "@/components/ui/separator"
-import { cn } from "@/lib/utils"
+import type { PropsWithChildren } from "react"
 import {
     useBack,
     useResourceParams,
     useUserFriendlyName,
 } from "@refinedev/core"
 import { ArrowLeftIcon } from "lucide-react"
-import type { PropsWithChildren } from "react"
+
+import { RefreshButton } from "@/components/refine-ui/buttons/refresh"
+import { Breadcrumb } from "@/components/refine-ui/layout/breadcrumb"
+import { Button } from "@/components/ui/button"
+import { Separator } from "@/components/ui/separator"
+import { cn } from "@/lib/utils"
 
 type EditViewProps = PropsWithChildren<{
     className?: string

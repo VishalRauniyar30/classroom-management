@@ -1,3 +1,10 @@
+import {
+    useActiveAuthProvider,
+    useLogout,
+    useRefineOptions,
+} from "@refinedev/core"
+import { LogOutIcon } from "lucide-react"
+
 import { UserAvatar } from "@/components/refine-ui/layout/user-avatar"
 import { ThemeToggle } from "@/components/refine-ui/theme/theme-toggle"
 import {
@@ -8,12 +15,6 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { SidebarTrigger, useSidebar } from "@/components/ui/sidebar"
 import { cn } from "@/lib/utils"
-import {
-    useActiveAuthProvider,
-    useLogout,
-    useRefineOptions,
-} from "@refinedev/core"
-import { LogOutIcon } from "lucide-react"
 
 export const Header = () => {
     const { isMobile } = useSidebar()

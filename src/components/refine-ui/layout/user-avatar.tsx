@@ -1,7 +1,8 @@
+import { useGetIdentity } from "@refinedev/core"
+
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Skeleton } from "@/components/ui/skeleton"
 import { cn } from "@/lib/utils"
-import { useGetIdentity } from "@refinedev/core"
 
 type User = {
     id: number

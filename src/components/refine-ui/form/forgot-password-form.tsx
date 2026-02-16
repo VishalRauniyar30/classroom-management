@@ -1,7 +1,8 @@
 "use client"
 
-import { ArrowLeft } from "lucide-react"
 import { useState } from "react"
+import { useForgotPassword, useLink, useRefineOptions } from "@refinedev/core"
+import { ArrowLeft } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -14,7 +15,6 @@ import {
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { cn } from "@/lib/utils"
-import { useForgotPassword, useLink, useRefineOptions } from "@refinedev/core"
 
 export const ForgotPasswordForm = () => {
     const [email, setEmail] = useState("")

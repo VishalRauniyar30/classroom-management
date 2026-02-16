@@ -174,7 +174,7 @@ const SubjectsCreate = () => {
                                         </FormItem>
                                     )}
                                 />
-                                <Button type="submit" size="lg" disabled={isSubmitting}>
+                                <Button type="submit" size="lg" disabled={isSubmitting} className="w-full">
                                     {isSubmitting ? "Creating..." : "Create Subject"}
                                 </Button>
                             </form>

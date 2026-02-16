@@ -23,6 +23,7 @@ import { Toaster } from "./components/refine-ui/notification/toaster"
 import { useNotificationProvider } from "./components/refine-ui/notification/use-notification-provider"
 import { ThemeProvider } from "./components/refine-ui/theme/theme-provider"
 import { dataProvider } from "./providers/data"
+import { authProvider } from "@/providers/auth"
 
 function App() {
     return (
@@ -32,13 +33,17 @@ function App() {
                     <DevtoolsProvider>
                         <Refine
                             dataProvider={dataProvider}
-                            // authProvider={authProvider}
+                            authProvider={authProvider}
                             notificationProvider={useNotificationProvider()}
                             routerProvider={routerProvider}
                             options={{
                                 syncWithLocation: true,
                                 warnWhenUnsavedChanges: true,
                                 projectId: "njBDXG-eVB4ZN-PiOXRB",
+                                title: {
+                                    text: "Klassroom",
+                                    icon: <GraduationCap />
+                                }
                             }}
                             resources={[{
                                 name: 'dashboard',

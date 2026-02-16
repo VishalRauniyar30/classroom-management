@@ -289,6 +289,7 @@ const ClassesCreate = () => {
                                             <FormControl>
                                                 <Textarea
                                                     placeholder="Brief description about the class"
+                                                    className="min-h-28"
                                                     {...field}
                                                 />
                                             </FormControl>

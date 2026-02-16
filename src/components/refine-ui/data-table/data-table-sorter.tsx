@@ -1,9 +1,10 @@
 "use client"
 
+import { ArrowDown, ArrowUp, ChevronsUpDown } from "lucide-react"
+import type { Column } from "@tanstack/react-table"
+
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
-import type { Column } from "@tanstack/react-table"
-import { ArrowDown, ArrowUp, ChevronsUpDown } from "lucide-react"
 
 export type DataTableSorterProps<TData> = {
     column: Column<TData>

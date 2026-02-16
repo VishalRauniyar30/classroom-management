@@ -1,5 +1,14 @@
 "use client"
 
+import React from "react"
+import {
+    useLink,
+    useMenu,
+    useRefineOptions,
+    type TreeMenuItem,
+} from "@refinedev/core"
+import { ChevronRight, ListIcon } from "lucide-react"
+
 import { Button } from "@/components/ui/button"
 import {
     Collapsible,
@@ -21,14 +30,6 @@ import {
     useSidebar as useShadcnSidebar,
 } from "@/components/ui/sidebar"
 import { cn } from "@/lib/utils"
-import {
-    useLink,
-    useMenu,
-    useRefineOptions,
-    type TreeMenuItem,
-} from "@refinedev/core"
-import { ChevronRight, ListIcon } from "lucide-react"
-import React from "react"
 
 export function Sidebar() {
     const { open } = useShadcnSidebar()

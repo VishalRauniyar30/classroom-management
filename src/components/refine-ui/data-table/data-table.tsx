@@ -1,11 +1,11 @@
 "use client"
 
+import { useEffect, useRef, useState } from "react"
 import type { BaseRecord, HttpError } from "@refinedev/core"
 import type { UseTableReturnType } from "@refinedev/react-table"
+import { Loader2 } from "lucide-react"
 import type { Column } from "@tanstack/react-table"
 import { flexRender } from "@tanstack/react-table"
-import { Loader2 } from "lucide-react"
-import { useEffect, useRef, useState } from "react"
 
 import { DataTablePagination } from "@/components/refine-ui/data-table/data-table-pagination"
 import {

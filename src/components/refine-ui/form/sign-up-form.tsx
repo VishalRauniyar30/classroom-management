@@ -1,6 +1,12 @@
 "use client"
 
 import { useState } from "react"
+import {
+    useLink,
+    useNotification,
+    useRefineOptions,
+    useRegister,
+} from "@refinedev/core"
 
 import { InputPassword } from "@/components/refine-ui/form/input-password"
 import { Button } from "@/components/ui/button"
@@ -16,12 +22,6 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Separator } from "@/components/ui/separator"
 import { cn } from "@/lib/utils"
-import {
-    useLink,
-    useNotification,
-    useRefineOptions,
-    useRegister,
-} from "@refinedev/core"
 
 export const SignUpForm = () => {
     const [email, setEmail] = useState("")
@@ -105,7 +105,7 @@ export const SignUpForm = () => {
                     <CardDescription
                         className={cn("text-muted-foreground", "font-medium")}
                     >
-                        Welcome to lorem ipsum dolor.
+                        Welcome to Klassroom.
                     </CardDescription>
                 </CardHeader>
 

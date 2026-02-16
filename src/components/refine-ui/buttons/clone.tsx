@@ -1,9 +1,10 @@
 "use client"
 
-import { Button } from "@/components/ui/button"
+import React from "react"
 import { type BaseKey, useCloneButton } from "@refinedev/core"
 import { Copy } from "lucide-react"
-import React from "react"
+
+import { Button } from "@/components/ui/button"
 
 type CloneButtonProps = {
     /**

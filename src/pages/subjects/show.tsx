@@ -11,6 +11,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Subject, Department } from "@/types"
+import { getInitials } from "@/lib/utils"
 
 type SubjectDetails = {
     subject: Subject & {
@@ -40,13 +41,6 @@ type SubjectUser = {
     email: string
     role: string
     image?: string | null
-}
-
-const getInitials = (name = "") => {
-    const parts = name.trim().split(" ").filter(Boolean)
-    if (parts.length === 0) return ""
-    if (parts.length === 1) return parts[0][0]?.toUpperCase() ?? ""
-    return `${parts[0][0] ?? ""}${parts[parts.length - 1][0] ?? ""}`.toUpperCase()
 }
 
 const SubjectsShow = () => {

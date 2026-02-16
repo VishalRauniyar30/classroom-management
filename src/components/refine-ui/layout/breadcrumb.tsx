@@ -1,12 +1,6 @@
 "use client"
 
-import {
-    Breadcrumb as ShadcnBreadcrumb,
-    BreadcrumbItem as ShadcnBreadcrumbItem,
-    BreadcrumbList as ShadcnBreadcrumbList,
-    BreadcrumbPage as ShadcnBreadcrumbPage,
-    BreadcrumbSeparator as ShadcnBreadcrumbSeparator,
-} from "@/components/ui/breadcrumb"
+import { Fragment, useMemo } from "react"
 import {
     matchResourceFromRoute,
     useBreadcrumb,
@@ -14,7 +8,14 @@ import {
     useResourceParams,
 } from "@refinedev/core"
 import { Home } from "lucide-react"
-import { Fragment, useMemo } from "react"
+
+import {
+    Breadcrumb as ShadcnBreadcrumb,
+    BreadcrumbItem as ShadcnBreadcrumbItem,
+    BreadcrumbList as ShadcnBreadcrumbList,
+    BreadcrumbPage as ShadcnBreadcrumbPage,
+    BreadcrumbSeparator as ShadcnBreadcrumbSeparator,
+} from "@/components/ui/breadcrumb"
 
 export function Breadcrumb() {
     const Link = useLink()

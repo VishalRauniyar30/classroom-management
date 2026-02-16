@@ -24,7 +24,6 @@ export const authProvider: AuthProvider = {
             }
 
             //store user data
-
             localStorage.setItem('user', JSON.stringify(data.user))
 
             return {
@@ -42,6 +41,7 @@ export const authProvider: AuthProvider = {
             }
         }
     },
+
     login: async ({ email, password }) => {
         try {
             const { data, error } = await authClient.signIn.email({
@@ -67,7 +67,6 @@ export const authProvider: AuthProvider = {
                 success: true,
                 redirectTo: "/",
             }
-
         } catch (error) {
             console.error("Login exception:", error)
             return {
@@ -79,6 +78,7 @@ export const authProvider: AuthProvider = {
             }
         }
     },
+
     logout: async () => {
         const { error } = await authClient.signOut()
 

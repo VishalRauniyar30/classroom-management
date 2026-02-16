@@ -15,6 +15,7 @@ import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
 import { Button } from "@/components/ui/button"
 import { DataTable } from "@/components/refine-ui/data-table/data-table"
+import { getInitials } from "@/lib/utils"
 
 type ClassUser = {
     id: string
@@ -22,14 +23,6 @@ type ClassUser = {
     email: string
     role: string
     image?: string | null
-}
-
-const getInitials = (name = "") => {
-    const parts = name.trim().split(' ').filter(Boolean)
-    if (parts.length === 0) return ""
-    if (parts.length === 1) return parts[0][0]?.toUpperCase() ?? ""
-
-    return `${parts[0][0] ?? ""}${parts[parts.length - 1][0] ?? ""}`.toUpperCase()
 }
 
 const ClassesShow = () => {
