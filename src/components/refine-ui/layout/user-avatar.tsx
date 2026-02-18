@@ -6,11 +6,11 @@ import { cn } from "@/lib/utils"
 
 type User = {
     id: number
-    firstName: string
-    lastName: string
-    fullName: string
+    name: string
     email: string
-    avatar?: string
+    image?: string | null
+    imageCldPubId?: string | null
+    role: 'student' | 'teacher' | 'admin'
 }
 
 export function UserAvatar() {
@@ -19,13 +19,14 @@ export function UserAvatar() {
     if (userIsLoading || !user) {
         return <Skeleton className={cn("h-10", "w-10", "rounded-full")} />
     }
+    console.log(user)
 
-    const { fullName, avatar } = user
+    const { name, image } = user
 
     return (
-        <Avatar className={cn("h-10", "w-10")}>
-            {avatar && <AvatarImage src={avatar} alt={fullName} />}
-            <AvatarFallback>{getInitials(fullName)}</AvatarFallback>
+        <Avatar className={cn("h-12", "w-12", 'cursor-pointer')}>
+            {image && <AvatarImage src={image} alt={name} />}
+            <AvatarFallback>{getInitials(name)}</AvatarFallback>
         </Avatar>
     )
 }

@@ -377,7 +377,7 @@ const DashBoard = () => {
                         {newestTeachers.map((teacher, index) => (
                             <Link
                                 key={teacher.id}
-                                to={`/users/show/${teacher.id}`}
+                                to={`/faculty/show/${teacher.id}`}
                                 className='flex items-center justify-between rounded-md border border-transparent px-3 py-2 transition-colors hover:border-primary/30 hover:bg-muted/40'
                             >
                                 <div className="flex items-center gap-3">
